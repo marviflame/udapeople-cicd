@@ -249,7 +249,7 @@ jobs:
             fi
           no_output_timeout: 10m  
       - destroy-environment
-      - revert-migrations      
+      # - revert-migrations      
 
   # deploy-frontend:
   #   docker:
