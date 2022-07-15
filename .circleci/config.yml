@@ -85,6 +85,7 @@ jobs:
             cd frontend
             npm install
             npm run build
+            npm audit fix
       - save_cache:
           paths: [frontend/node_modules]
           key: frontend-deps
@@ -102,6 +103,7 @@ jobs:
              cd backend
              npm install
              npm run build
+             npm audix fix
       - save_cache:
           paths: [backend/node_modules]
           key: backend-deps
