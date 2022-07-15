@@ -307,9 +307,10 @@ jobs:
           command: |
             cd backend
             npm run build
-            tar -czvf artifact-"${CIRCLE_WORKFLOW_ID:0:7}".tar.gz dist
+            tar -C backend -czvf artifact.tar.gz 
             cd ..
-            cp backend/artifact.tar.gz .circleci/ansible/roles/deploy/files
+            mkdir ~/project/.circleci/ansible/roles/deploy/files
+            cp artifact.tar.gz ~/project/.circleci/ansible/roles/deploy/files/
       - run:
           name: Deploy Backend
           command: |
