@@ -242,6 +242,7 @@ jobs:
             cd backend
             npm install
             npm run migrations > migrations_dump.txt
+            cat migrations_dump.txt
       - run:
           name: Send migrations status to kvdb.io
           command: |
@@ -346,9 +347,9 @@ jobs:
             echo "${API_URL}"
             if curl "${API_URL}/api/status" | grep "ok"
             then
-                return 0
+                exit 0
             else
-                return 1
+                exit 1
             fi
       - run:
           name: Frontend smoke test
@@ -358,7 +359,7 @@ jobs:
             if curl -s ${URL} | grep "Welcome"
             then
                 # Change this to 0 after the job fails
-              return 0
+              return 1
             else
               return 1
             fi
