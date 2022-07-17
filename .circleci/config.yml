@@ -84,7 +84,6 @@ jobs:
           command: |
             cd frontend
             npm install
-            npm audit fix --force --audit-level=critical
             npm run build
             
       - save_cache:
@@ -103,7 +102,6 @@ jobs:
           command: |
              cd backend
              npm install
-             npm audit fix --force --audit-level=critical
              npm run build
              
       - save_cache:
