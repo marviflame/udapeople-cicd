@@ -349,7 +349,7 @@ jobs:
             --filters "Name=tag:project,Values=udapeople" \
             --output text )
       - run:
-          name: Backend smoke test
+          name: backend smoke test
           command: |
             export BACKEND_IP=$(aws ec2 describe-instances  \
             --query 'Reservations[*].Instances[*].PublicIpAddress' \
@@ -365,7 +365,7 @@ jobs:
               exit 1
             fi
       - run:
-          name: Frontend smoke test
+          name: frontend smoke test
           command: |
             URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website.${AWS_DEFAULT_REGION}.amazonaws.com/#/employees"            
             echo ${URL} 
