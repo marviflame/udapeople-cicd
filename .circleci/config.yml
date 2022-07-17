@@ -349,7 +349,7 @@ jobs:
             --filters "Name=tag:project,Values=udapeople" \
             --output text )
       - run:
-          name: backend smoke test
+          name: Backend smoke test
           command: |
             export BACKEND_IP=$(aws ec2 describe-instances  \
             --query 'Reservations[*].Instances[*].PublicIpAddress' \
@@ -365,15 +365,15 @@ jobs:
               exit 1
             fi
       - run:
-          name: frontend smoke test
+          name: Frontend smoke test
           command: |
             URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website.${AWS_DEFAULT_REGION}.amazonaws.com/#/employees"            
             echo ${URL} 
             if curl -s ${FRONTEND_WEBSITE} | grep "Welcome"
             then
-              exit 1
+              exit 0
             else
-              exit 2
+              exit 1
             fi
       - destroy-environment
       - revert-migrations
@@ -451,7 +451,7 @@ workflows:
           requires: [run-migrations]
       - smoke-test:
           requires: [deploy-backend, deploy-frontend]
-      # - cloudfront-update:
-      #     requires: [smoke-test]
+      - cloudfront-update:
+          requires: [smoke-test]
       # - cleanup:
       #     requires: [cloudfront-update]
