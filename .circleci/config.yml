@@ -412,7 +412,7 @@ jobs:
       - install_awscli
       - install_nodejs
       - run:
-          name: Fetch the old workflow ID
+          name: Fetch the old workflow id
           command: |
             export STACKS=($(aws cloudformation list-stacks \
                --query "StackSummaries[*].Stackname" \
