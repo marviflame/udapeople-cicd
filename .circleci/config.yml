@@ -343,7 +343,7 @@ jobs:
       - install_awscli
       - install_nodejs
       - run:
-          name: Backend url
+          name: Backend Url
           command: |
             echo $(aws ec2 describe-instances  \
             --query 'Reservations[*].Instances[*].PublicIpAddress' \
