@@ -309,7 +309,7 @@ jobs:
             cd backend
             npm install
       - run:
-          name: Deploy Backend
+          name: Deploy backend
           command: |
             echo NODE_ENV=production > ~/project/backend/.env
             echo TYPEORM_CONNECTION=postgres >> "backend/.env"
