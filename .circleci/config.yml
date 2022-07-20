@@ -406,7 +406,7 @@ jobs:
       - destroy-environment
       - revert-migrations 
 
-  clean-up:
+  cleanup:
       docker:
           - image: amazon/aws-cli
       steps:
